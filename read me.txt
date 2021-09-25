@@ -1,0 +1,3 @@
+put all your authorization codes from twitter and put them in a "Credentials.py" file
+then the "import credentials will work"
+keep both .py files in the same folder
