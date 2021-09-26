@@ -1,8 +1,15 @@
 
 import random
 import tweepy
-import credentials
+#import_credentials
 import time
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+#environment variables
+
+
 def random_line(fname):
     lines = open(fname).read().splitlines()
     return random.choice(lines)
@@ -18,12 +25,15 @@ def create_tweet():
     return tweet
 
 
+API_KEY=os.getenv("API_KEY")
+API_SECRET_KEY=os.getenv("API_SECRET_KEY")
+ACCESS_TOKEN=os.getenv("ACCESS_TOKEN")
+ACCESS_TOKEN_SECRET=os.getenv("ACCESS_TOKEN_SECRET")
 
-
-consumer_key = credentials.API_KEY
-consumer_secret_key = credentials.API_SECRET_KEY
-access_token = credentials.ACCESS_TOKEN
-access_token_secret = credentials.ACCESS_TOKEN_SECRET
+consumer_key = API_KEY
+consumer_secret_key = API_SECRET_KEY
+access_token = ACCESS_TOKEN
+access_token_secret = ACCESS_TOKEN_SECRET
 
 def tweet_quote():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
@@ -35,7 +45,7 @@ if __name__ == "__main__":
     tweet_quote()
     
 def tweet_quote():
-    interval = 60 * 60 * 24
+    interval = 60 * 60 * 6
     
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
     auth.set_access_token(access_token, access_token_secret)

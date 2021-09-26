@@ -1,3 +1,2 @@
-put all your authorization codes from twitter and put them in a "Credentials.py" file
-then the "import credentials will work"
-keep both .py files in the same folder
+"""add your env file for twitter auth codes"""
+Quote bot randomly quotes one out of 196 sutras from Patanjali's Yoga Sutras every few hours
