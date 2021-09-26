@@ -16,7 +16,7 @@ def random_line(fname):
 
 
 def get_random_quote():
-    return random_line('test.txt')
+    return random_line('PYS.txt')
 
 def create_tweet():
     quote = get_random_quote()
