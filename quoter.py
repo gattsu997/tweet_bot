@@ -48,29 +48,31 @@ def tweet_quote1():
         api.update_status(tweet)
         time.sleep(interval)
 
-if __name__ == "__main__":
-    tweet_quote1()
+
     
 
     
+def mention_reply():       
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
+    auth.set_access_token(access_token, access_token_secret)
+    api = tweepy.API(auth)
+    bot_id= int(api.me().id_str)
+    mention_id=1
+    message=create_tweet()
+    while True:
+        mentions = api.mentions_timeline(since_id=mention_id)
+        for mention in mentions:
+            print("mention tweet found!")
+            print(f"{mention.author.screen_name} - {mention.text}")
+            mention_id=mention.id
+            if mention.in_reply_to_status_id is None and mention.author.id!=bot_id:
+                name=mention.author.screen_name
+                message=create_tweet()
+                reply_tweet = "@" + str(name) + " " + message
+                api.update_status(reply_tweet ,in_reply_to_status_id=mention.id_str)            
+                print("Succesfully Replied")
+        time.sleep(15)
         
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
-bot_id= int(api.me().id_str)
-mention_id=1
-message=create_tweet()
-while True:
-    mentions = api.mentions_timeline(since_id=mention_id)
-    for mention in mentions:
-        print("mention tweet found!")
-        print(f"{mention.author.screen_name} - {mention.text}")
-        mention_id=mention.id
-        if mention.in_reply_to_status_id is None and mention.author.id!=bot_id:
-            name=mention.author.screen_name
-            message=create_tweet()
-            reply_tweet = "@" + str(name) + " " + message
-            api.update_status(reply_tweet ,in_reply_to_status_id=mention.id_str)            
-            print("Succesfully Replied")
-    time.sleep(15)
-        
+while 1<2:
+    tweet_quote1()
+    mention_reply()
