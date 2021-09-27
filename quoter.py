@@ -37,7 +37,7 @@ access_token_secret = ACCESS_TOKEN_SECRET
 
 
 def tweet_quote1():
-    interval = 3*60*60
+    interval = 30
     
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
     auth.set_access_token(access_token, access_token_secret)
