@@ -35,17 +35,9 @@ consumer_secret_key = API_SECRET_KEY
 access_token = ACCESS_TOKEN
 access_token_secret = ACCESS_TOKEN_SECRET
 
-def tweet_quote():
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
-    auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth)
-    test_tweet = create_tweet()
-    api.update_status(test_tweet)
-if __name__ == "__main__":
-    tweet_quote()
-    
-def tweet_quote():
-    interval = 60 * 60 * 6
+
+def tweet_quote1():
+    interval = 3*60*60
     
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
     auth.set_access_token(access_token, access_token_secret)
@@ -55,6 +47,11 @@ def tweet_quote():
         tweet = create_tweet()
         api.update_status(tweet)
         time.sleep(interval)
+
+if __name__ == "__main__":
+    tweet_quote1()
+    
+
     
         
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
